@@ -1,0 +1,7 @@
+@import "../../styles/var";
+
+$agmMapHeight: calc(100vh - #{$headerHeight});
+
+agm-map {
+    height: $agmMapHeight;
+}

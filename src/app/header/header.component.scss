@@ -1,5 +1,7 @@
+@import "../../styles/var";
+
 .header {
-    height: 60px;
+    height: $headerHeight;
     width: 100%;
     background-color: #ebeae6;
     display: flex;

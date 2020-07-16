@@ -9,6 +9,8 @@ import { BookingService } from './services/booking.service';
 import { MapComponent } from './map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
+import { Consts } from './utils/consts';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: Consts.googleApiKey
+    })
   ],
   providers: [PropertyService, BookingService],
   bootstrap: [AppComponent]
