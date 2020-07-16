@@ -1,0 +1,47 @@
+.booking-container {
+    position: absolute;
+    bottom: 20px;
+    background: white;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    max-width: 400px;
+    width: calc(100% - 70px);
+
+    .info-container {
+        display: flex;
+        margin-bottom: 20px;
+        justify-content: space-between;
+
+        .hotel-image {
+            flex: 0 0 40%;
+            background: url('../../assets/hotel.jpg') no-repeat center center;
+            background-size: 150px 200px;
+            height: 200px;
+            background-size: auto 200px;
+        }
+
+        .booking-info {
+            flex: 0 0 50%;
+        }
+    }
+
+    .button-container {
+        button {
+            margin: 0 auto;
+            border: 0;
+            background-color: #f7941d;
+            color: white;
+            width: 100%;
+            border: 0;
+            font-size: 20px;
+            padding: 20px 0;
+            outline: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #f88700;
+            }
+        }
+    }
+}

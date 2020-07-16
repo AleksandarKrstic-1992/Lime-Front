@@ -1,3 +1,12 @@
-<p>
-  booking works!
-</p>
+<div *ngIf="selectedProperty" [@fadeInOut] class="booking-container">
+  <div class="info-container">
+    <div class="hotel-image"></div>
+    <div class="booking-info">
+      <p class="title">{{selectedProperty.title}}</p>
+      <p class="vicinity" [innerHTML]='selectedProperty.vicinity'></p>
+    </div>
+  </div>
+  <div class="button-container">
+    <button (click)="onBookingClick(selectedProperty.id)">Book</button>
+  </div>
+</div>

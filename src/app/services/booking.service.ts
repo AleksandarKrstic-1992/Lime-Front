@@ -15,8 +15,8 @@ export class BookingService extends BaseService {
         this.get(endpoint, callback);
     }
 
-    addBooking(booking: Booking, callback) {
-        const endpoint = `${this.baseUrl}${Consts.bookingPath}`;
-        this.post(endpoint, booking, callback);
+    addBooking(propertyId, callback) {
+        const endpoint = `${this.baseUrl}${Consts.bookingPath}?propertyId=${propertyId}`;
+        this.post(endpoint, null, callback);
     }
 }

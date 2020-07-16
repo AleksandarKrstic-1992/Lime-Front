@@ -44,8 +44,12 @@ export class MapComponent implements OnInit, OnDestroy {
     this.getProperties(lat, lng);
   }
 
-  onMarkerClick(property) {
-    this.propertyService.setSelected(property);
+  onMarkerClick(property: Property) {
+    this.propertyService.setSelected(
+      !this.selectedProperty || (this.selectedProperty && this.selectedProperty.id !== property.id)
+      ? property
+      : null
+      );
   }
 
   private getProperties(lat = this.lat, lng = this.lng) {
