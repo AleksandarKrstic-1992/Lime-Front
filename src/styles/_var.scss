@@ -1,1 +1,25 @@
 $headerHeight: 60px;
+$buttonBackground: #f7941d;
+$buttonBackgroundHover: #f88700;
+$errorBackground: #f81d00;
+$errorBorder: #f80000;
+$successBackground: #00c000;
+$successBorder: #007500;
+
+// breakpoint
+$sm: 600px;
+
+@mixin absoluteView($backgroundColor) {
+    position: absolute;
+    background: $backgroundColor;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    max-width: 400px;
+    width: calc(100% - 70px);
+}
+
+@mixin toastView($backgroundColor, $borderColor) {
+    background: $backgroundColor;
+    border-color: $borderColor;
+}

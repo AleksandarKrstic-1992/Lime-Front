@@ -2,8 +2,14 @@
   <div class="info-container">
     <div class="hotel-image"></div>
     <div class="booking-info">
-      <p class="title">{{selectedProperty.title}}</p>
+      <div class="top-info">
+        <p class="title">{{selectedProperty.title}}</p>
       <p class="vicinity" [innerHTML]='selectedProperty.vicinity'></p>
+      </div>
+      <div class="bottom-info">
+        <p class="price">$98</p>
+        <p class="description">Designs may vary</p>
+      </div>
     </div>
   </div>
   <div class="button-container">

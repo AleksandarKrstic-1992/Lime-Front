@@ -12,13 +12,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { Consts } from './utils/consts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastService } from './services/toast.service';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     BookingComponent,
-    MapComponent
+    MapComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       apiKey: Consts.googleApiKey
     })
   ],
-  providers: [PropertyService, BookingService],
+  providers: [PropertyService, BookingService, ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

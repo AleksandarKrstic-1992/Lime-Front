@@ -4,6 +4,7 @@ import {style, state, animate, transition, trigger} from '@angular/animations';
 import { PropertyService } from '../services/property.service';
 import { Property } from '../models/property.model';
 import { Subscription } from 'rxjs';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-booking',
@@ -24,10 +25,14 @@ import { Subscription } from 'rxjs';
 export class BookingComponent implements OnInit, OnDestroy {
 
   selectedProperty: Property;
-  subscription: Subscription;
+  propertySubscription: Subscription;
 
-  constructor(private bookingService: BookingService, private propertyService: PropertyService) {
-    this.subscription = this.propertyService.getSelected().subscribe(property => {
+  constructor(
+    private bookingService: BookingService,
+    private propertyService: PropertyService,
+    private toastService: ToastService
+    ) {
+    this.propertySubscription = this.propertyService.getSelected().subscribe(property => {
       this.selectedProperty = property;
     });
    }
@@ -38,12 +43,16 @@ export class BookingComponent implements OnInit, OnDestroy {
   onBookingClick(propertyId: string) {
     this.bookingService.addBooking(propertyId, (data) => {
       this.propertyService.setSelected(null);
-      console.log(data);
+      if (data && data['error']) {
+        this.toastService.setError('Ooops! Something went wrong');
+      } else {
+        this.toastService.setSuccess('Successfully booked');
+      }
     });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.propertySubscription.unsubscribe();
   }
 
 }

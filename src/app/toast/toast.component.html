@@ -1,0 +1,9 @@
+<div class="toast-message" 
+  *ngIf="toast" 
+  [ngClass]="{
+    'message-error': toastType.Error === toast.type,
+    'message-success': toastType.Success === toast.type
+  }" 
+  [@fadeInOut]>
+  {{toast.message}}
+</div>

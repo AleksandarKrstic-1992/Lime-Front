@@ -1,0 +1,21 @@
+@import '../../styles/var';
+
+$topPosition: calc(#{$headerHeight} + 10px);
+
+.toast-message {
+    @include absoluteView(white);
+    top: $topPosition;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid;
+    color: white;
+
+    &.message-error {
+        @include toastView($errorBackground, $errorBorder);
+    }
+
+    &.message-success {
+        @include toastView($successBackground, $successBorder);
+    }
+}
