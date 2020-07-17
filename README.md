@@ -1,27 +1,33 @@
-# Limehome
+# Limehome front
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
+### Installation
+---
+First, we go to the root of the project `/limehome/` and run command:
 
-## Development server
+ `npm install` 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+for installing all unnecessary `node_modules`.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Once installation is done, we can start develop or build app.
 
-## Build
+### Developing app
+---
+For creating dev server, type command `npm run start` and navigate to `http://localhost:4200/` 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Build
+---
+For building app, type command `npm build`, or type command `npm build --prod` for production build. Location of builded artifact will be inside `dist` folder
 
-## Running unit tests
+### Features
+---
+This app contains next features:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Show nearby hotels on Google map
+* Show information about selected hotel
+* Booking selected hotel
+* Move map to see more hotels in area
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Check demo
+---
+Demo link [here](http://)
