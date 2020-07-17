@@ -6,6 +6,7 @@
   (mapReady)="onMapReady($event)" 
   [usePanning]='true' 
   [zoom]='15'
+  (mapClick)="closeBooking()"
 >
   <ng-container *ngFor="let property of properties">
     <agm-marker 

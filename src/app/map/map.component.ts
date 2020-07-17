@@ -52,8 +52,8 @@ export class MapComponent implements OnInit, OnDestroy {
       );
   }
 
-  hideBooking(e) {
-    console.log('aaaaaa');
+  closeBooking() {
+    this.propertyService.setSelected();
   }
 
   private getProperties(lat = this.lat, lng = this.lng) {
