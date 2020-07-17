@@ -14,6 +14,7 @@ import { Consts } from './utils/consts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastService } from './services/toast.service';
 import { ToastComponent } from './toast/toast.component';
+import { CloseBookingDirective } from './directives/closeBooking.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ToastComponent } from './toast/toast.component';
     HeaderComponent,
     BookingComponent,
     MapComponent,
-    ToastComponent
+    ToastComponent,
+    CloseBookingDirective
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@ $successBackground: #00c000;
 $successBorder: #007500;
 
 // breakpoint
-$sm: 600px;
+$sm: 768px;
 
 @mixin absoluteView($backgroundColor) {
     position: absolute;

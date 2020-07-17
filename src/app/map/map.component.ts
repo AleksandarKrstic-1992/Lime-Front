@@ -52,6 +52,10 @@ export class MapComponent implements OnInit, OnDestroy {
       );
   }
 
+  hideBooking(e) {
+    console.log('aaaaaa');
+  }
+
   private getProperties(lat = this.lat, lng = this.lng) {
     this.propertyService.getPropertiesByAt(`${lat},${lng}`, ({results}) => {
       this.properties = this.properties.concat(results);

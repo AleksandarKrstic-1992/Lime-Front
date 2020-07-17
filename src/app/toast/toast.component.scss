@@ -11,6 +11,10 @@ $topPosition: calc(#{$headerHeight} + 10px);
     border: 1px solid;
     color: white;
 
+    @media only screen and (max-width: $sm) {
+        padding:10px;
+    }
+
     &.message-error {
         @include toastView($errorBackground, $errorBorder);
     }

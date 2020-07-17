@@ -51,6 +51,10 @@ export class BookingComponent implements OnInit, OnDestroy {
     });
   }
 
+  onOutsideClick() {
+    this.propertyService.setSelected();
+  }
+
   ngOnDestroy() {
     this.propertySubscription.unsubscribe();
   }
