@@ -24,10 +24,11 @@ For building app, type command `npm build`, or type command `npm build:prod` for
 This app contains next features:
 
 * Show nearby hotels on Google map
-* Show information about selected hotel
+* Show information about selected hotel by clicking on marker
 * Booking selected hotel
+* Scroll carousel to get position of hotel on map
 * Move map to see more hotels in area
 
 ### Check demo
 ---
-Demo link [here](http://)
+Demo link [here](http://173.249.5.46:44576/)
