@@ -1,12 +1,14 @@
-<swiper 
-  #swiperWrapper
-  [@fadeInOut] 
-  class="slider-content" 
-  *ngIf="selectedProperty"
-  (indexChange)="onIndexChange($event)"
-  [index]="index"
->
-  <ng-container *ngFor="let property of properties">
-    <app-booking [property]="property"></app-booking>
-  </ng-container>
-</swiper>
+<div class="slider-wrapper" *ngIf="selectedProperty" [ngClass]="{'show-wrapper': showSlider}">
+  <swiper 
+    #swiperWrapper
+    class="slider-content" 
+    (indexChange)="onIndexChange($event)"
+    [index]="index"
+  >
+    <ng-container *ngFor="let property of properties">
+      <app-booking
+      [isSelected]="property && selectedProperty && property.id === selectedProperty.id"
+      [property]="property"></app-booking>
+    </ng-container>
+  </swiper>
+</div>

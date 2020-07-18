@@ -10,11 +10,6 @@ export class BookingService extends BaseService {
         super(http);
     }
 
-    getPropertiesByAt(propertyId: string, callback) {
-        const endpoint = `${this.baseUrl}${Consts.bookingPath}/${propertyId}/${Consts.propertyPath}}`;
-        this.get(endpoint, callback);
-    }
-
     addBooking(propertyId, callback) {
         const dto: Booking = new Booking(propertyId);
         const endpoint = `${this.baseUrl}${Consts.bookingPath}`;

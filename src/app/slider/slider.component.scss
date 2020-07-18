@@ -1,22 +1,26 @@
 @import '../../styles/var';
 
-.slider-content {
+.slider-wrapper {
     @include fixedView();
     padding: unset;
-    bottom: 10px;
-    width: 90%;
-    max-width: 500px;
-
-    @media only screen and (max-width: $screen-md - 1) {
-        padding: 0;
+    bottom: -400px;
+    width: 100%;
+    max-width: unset;
+    transition: bottom 500ms;
+    &.show-wrapper {
         bottom: 10px;
-        width: 95%;
-    }
+        @media only screen and (max-width: $screen-md - 1) {
+            padding: 0;
+            bottom: 10px;
+            max-width: unset;
+            width: 100%;
+        }
 
-    @media only screen and (max-width: $screen-md) and (orientation: landscape) {
-        width: 95%;
-        padding: 0;
-        bottom: 5px;
-        max-width: 400px;
+        @media only screen and (max-width: $screen-md) and (orientation: landscape) {
+            padding: 0;
+            bottom: 5px;
+            width: 100%;
+            max-width: unset;
+        }
     }
 }

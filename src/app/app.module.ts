@@ -19,11 +19,22 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { SliderComponent } from './slider/slider.component';
 
-const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+export const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
-  slidesPerView: 1.1,
+  slidesPerView: 3.1,
   initialSlide: 0,
-  spaceBetween: 10
+  spaceBetween: 10,
+  observer: true,
+  breakpoints: {
+    576: {
+      slidesPerView: 1.1,
+      loop: false,
+    },
+    1024: {
+      slidesPerView: 2.1,
+      loop: false,
+    }
+  }
 };
 
 @NgModule({

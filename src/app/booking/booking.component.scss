@@ -25,18 +25,30 @@
             flex: 0 0 40%;
             background: url('../../assets/hotel.jpg') no-repeat center center;
             height: 180px;
-            background-size: auto 180px;
+            background-size: auto 100%;
+            transition: all 0.4s;
 
             @media only screen and (max-width: $screen-md) {
                 height: 135px;
-                width: 100px;
-                background-size: auto 135px;
             }
 
             @media only screen and (max-width: $screen-md) and (orientation: landscape) {
                 height: 100px;
-                width: 100px;
                 background-size: auto 120%;
+            }
+
+            &.selected {
+                @media screen and (min-width: $screen-sm + 1) {
+                    height: 145px
+                }
+
+                @media screen and (min-width: $screen-md + 1) {
+                    height: 190px;
+                }
+
+                @media only screen and (max-width: $screen-md) and (orientation: landscape) {
+                    height: 110px;
+                }
             }
         }
 
@@ -54,11 +66,16 @@
             .title {
                 font-weight: bold;
                 font-size: 15px;
-                margin-bottom: 5px;
+                margin-bottom: 10px;
                 font-family: "OpenSans-SemiBold";
+
+                @media only screen and (max-width: $screen-lg) {
+                    font-size: 13px;
+                }
 
                 @media only screen and (max-width: $screen-md) {
                     font-size: 11px;
+                    margin-bottom: 5px;
                 }
             }
 
@@ -69,19 +86,28 @@
                 text-transform: uppercase;
                 font-weight: bold;
                 letter-spacing: 0.6px;
+
+                @media only screen and (max-width: $screen-lg) {
+                    font-size: 12px;   
+                }
+                
                 @media only screen and (max-width: $screen-md) {
                     font-size: 10px;
                 }
             }
 
             .price {
-                font-size: 20px;
+                font-size: 24px;
                 margin-bottom: 5px;
                 font-family: "OpenSans-SemiBold";
 
-                @media only screen and (max-width: $screen-md) {
-                    font-size: 16px;
+                @media only screen and (max-width: $screen-lg) {
+                    font-size: 22px;
                     line-height: 1;
+                }
+
+                @media only screen and (max-width: $screen-md) {
+                    font-size: 20px;
                 }
             }
 
@@ -90,6 +116,11 @@
                 color: #a8aeb3;
                 font-family: 'OpenSans-Regular';
                 font-weight: 200;
+
+                @media only screen and (max-width: $screen-lg) {
+                    font-size: 11px;
+                }
+
                 @media only screen and (max-width: $screen-md) {
                     font-size: 9px;
                 }

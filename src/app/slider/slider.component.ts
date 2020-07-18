@@ -1,25 +1,13 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, HostListener, ElementRef } from '@angular/core';
 import { PropertyService } from '../services/property.service';
 import { Subscription } from 'rxjs';
 import { Property } from '../models/property.model';
-import {style, state, animate, transition, trigger} from '@angular/animations';
-import { SwiperDirective, SwiperComponent } from 'ngx-swiper-wrapper';
+import { SwiperComponent } from 'ngx-swiper-wrapper';
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss'],
-  animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({opacity : 0}),
-        animate(500, style({opacity : 1}))
-      ]),
-      transition(':leave', [
-        animate(500, style({opacity : 0}))
-      ])
-    ])
-  ]
 })
 export class SliderComponent implements OnInit, OnDestroy {
   subscriptionProperties: Subscription;
@@ -28,24 +16,45 @@ export class SliderComponent implements OnInit, OnDestroy {
   selectedProperty: Property = null;
   index = 0;
 
+  showSlider = false;
+
   @ViewChild('swiperWrapper') swiperWrapper: SwiperComponent;
 
   constructor(private propertyService: PropertyService) {
     this.subscriptionProperties = this.propertyService.getAllProperties().subscribe((properties: Property[]) => {
       this.properties = properties;
       if (this.properties && this.properties.length && this.selectedProperty) {
-        const indexOfSelected = this.properties.findIndex(
-          (x: Property) => x.id === this.selectedProperty.id
-        );
-        if (this.index !== indexOfSelected) {
-          this.index = indexOfSelected;
-        }
+        this.getIndexOfSelected();
       }
     });
 
     this.subscriptionProperty = this.propertyService.getSelected().subscribe((property: Property) => {
-      this.selectedProperty = property;
+      if (!property) {
+        this.showSlider = false;
+        setTimeout(() => {
+          this.selectedProperty = property;
+        }, 500);
+      } else {
+        if (property && this.selectedProperty && property.id === this.selectedProperty.id) {
+          this.selectedProperty = property;
+        } else {
+          this.selectedProperty = property;
+          this.getIndexOfSelected();
+          setTimeout(() => {
+            this.showSlider = true;
+          }, 100);
+        }
+      }
     });
+  }
+
+  private getIndexOfSelected() {
+    const indexOfSelected = this.properties.findIndex(
+      (x: Property) => x.id === this.selectedProperty.id
+    );
+    if (this.index !== indexOfSelected) {
+      this.index = indexOfSelected;
+    }
   }
 
   ngOnInit() {
@@ -60,5 +69,4 @@ export class SliderComponent implements OnInit, OnDestroy {
     this.subscriptionProperty.unsubscribe();
     this.subscriptionProperties.unsubscribe();
   }
-
 }

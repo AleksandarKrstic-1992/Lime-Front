@@ -1,6 +1,6 @@
 <div *ngIf="property" class="booking-container">
   <div class="info-container">
-    <div class="hotel-image"></div>
+    <div class="hotel-image" [ngClass]="{'selected': isSelected}"></div>
     <div class="booking-info">
       <div class="top-info">
         <p class="title">{{property.title}}</p>

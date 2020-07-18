@@ -13,6 +13,7 @@ import { ToastService } from '../services/toast.service';
 export class BookingComponent implements OnInit {
 
   @Input() property: Property;
+  @Input() isSelected = false;
 
   constructor(
     private bookingService: BookingService,
