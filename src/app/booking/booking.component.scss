@@ -64,8 +64,11 @@
 
             .vicinity {
                 font-size: 14px;
-                color: #a8aeb3;
+                color: rgb(151, 157, 163);
                 font-family: 'OpenSans-Regular';
+                text-transform: uppercase;
+                font-weight: bold;
+                letter-spacing: 0.6px;
                 @media only screen and (max-width: $screen-md) {
                     font-size: 10px;
                 }

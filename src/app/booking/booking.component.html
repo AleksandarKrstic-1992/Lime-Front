@@ -4,7 +4,9 @@
     <div class="booking-info">
       <div class="top-info">
         <p class="title">{{property.title}}</p>
-        <p class="vicinity" [innerHTML]='property.vicinity'></p>
+        <ng-container *ngIf="property.distance">
+          <p class="vicinity">{{(property.distance / 1000) | number : '1.2-2'}} km from the city center</p>
+        </ng-container>
       </div>
       <div class="bottom-info">
         <p class="price">£98</p>
