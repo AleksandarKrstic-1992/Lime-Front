@@ -1,7 +1,7 @@
 @import '../../styles/var';
 
 .slider-content {
-    @include absoluteView();
+    @include fixedView();
     padding: unset;
     bottom: 10px;
     width: 90%;

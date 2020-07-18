@@ -17,6 +17,15 @@ $screen-xl: 1400px;
 
 @mixin absoluteView($backgroundColor: null) {
     position: absolute;
+    @include definePos($backgroundColor);
+}
+
+@mixin fixedView($backgroundColor: null) {
+    position: fixed;
+    @include definePos($backgroundColor);
+}
+
+@mixin definePos($backgroundColor: null) {
     @if variable-exists(some_variable) {
         background: $backgroundColor;
     }
