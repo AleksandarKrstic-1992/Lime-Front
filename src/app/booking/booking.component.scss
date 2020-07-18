@@ -1,11 +1,11 @@
 @import '../../styles/var';
 
 .booking-container {
-    bottom: 10px;
-    @include absoluteView(white);
+    background: white;
+    padding: 20px;
 
-    @media only screen and (max-width: $sm) {
-        padding: 10px;
+    @media only screen and (max-width: $screen-md) {
+        padding: 15px;
     }
 
     .info-container {
@@ -13,20 +13,20 @@
         margin-bottom: 20px;
         justify-content: space-between;
 
+        @media only screen and (max-width: $screen-md) {
+            margin-bottom: 15px;
+        }
+
         .hotel-image {
             flex: 0 0 40%;
             background: url('../../assets/hotel.jpg') no-repeat center center;
-            background-size: 150px 200px;
             height: 200px;
             background-size: auto 200px;
 
-            @media only screen and (max-width: $sm) {
-                flex: 0 0 45%;
-            }
-
-            @media only screen and (max-width: $sm) and (orientation: landscape) {
-                height: 40vh;
-                background-size: auto 40vh;
+            @media only screen and (max-width: $screen-md) {
+                height: 135px;
+                width: 100px;
+                background-size: auto 135px;
             }
         }
 
@@ -36,30 +36,61 @@
             justify-content: space-between;
             flex-direction: column;
 
+            @media only screen and (max-width: $screen-md) {
+                width: 140px;
+                padding-left: 10px;
+                flex: 0 0 60%;
+            }
+
             .title {
                 font-weight: bold;
                 font-size: 18px;
                 margin-bottom: 5px;
+                font-family: "OpenSans-SemiBold";
+
+                @media only screen and (max-width: $screen-md) {
+                    font-size: 11px;
+                }
             }
 
             .vicinity {
                 font-size: 16px;
                 color: #a8aeb3;
+                font-family: 'OpenSans-Regular';
+                @media only screen and (max-width: $screen-md) {
+                    font-size: 11px;
+                }
             }
 
             .price {
                 font-size: 25px;
                 margin-bottom: 5px;
+                font-family: "OpenSans-SemiBold";
+
+                @media only screen and (max-width: $screen-md) {
+                    font-size: 16px;
+                    line-height: 1;
+                }
             }
 
             .description {
                 font-size: 16px;
                 color: #a8aeb3;
+                font-family: 'OpenSans-Regular';
+                font-weight: 200;
+                @media only screen and (max-width: $screen-md) {
+                    font-size: 9px;
+                }
             }
         }
     }
 
     .button-container {
+        max-width: 400px;
+        margin: 0 auto;
+        @media only screen and (max-width: $screen-md - 1) {
+            max-width: unset;
+        }
         button {
             margin: 0 auto;
             border: 0;
@@ -71,9 +102,12 @@
             padding: 20px 0;
             outline: none;
             cursor: pointer;
+            font-family: 'OpenSans-Regular';
 
-            @media only screen and (max-width: $sm) {
-                padding: 15px 0;
+            @media only screen and (max-width: $screen-md) {
+                padding: 0;
+                height: 40px;
+                font-size: 13px;
             }
 
             &:hover {

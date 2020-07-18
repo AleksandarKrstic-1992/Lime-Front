@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Property } from '../models/property.model';
 import { PropertyService } from '../services/property.service';
 import { Subscription } from 'rxjs';
+import { MapTypeStyle } from '@agm/core/services/google-maps-types';
+import { AgmMap } from '@agm/core';
 
 @Component({
   selector: 'app-map',
@@ -10,17 +12,86 @@ import { Subscription } from 'rxjs';
 })
 export class MapComponent implements OnInit, OnDestroy {
 
+  @ViewChild('agmMap') agmMap: AgmMap;
+
+  readonly distanceFactor = 0.05;
   lat = 52.520008;
   lng = 13.404954;
   baseIconsPath = '../../assets/icons/';
 
+  iconUrl = {
+    scaledSize: {
+      width: 35,
+      height: 35
+    },
+    url: this.baseIconsPath + 'marker.svg'
+  };
+
+  selectedIconUrl = {
+    scaledSize: {
+      width: 50,
+      height: 50
+    },
+    url: this.baseIconsPath + 'selected-marker.svg'
+  };
+
+  styles: MapTypeStyle[] = [
+    {
+      featureType: 'administrative',
+      elementType: 'geometry',
+      stylers: [
+        {
+          visibility: 'off'
+        }
+      ]
+    },
+    {
+      featureType: 'poi',
+      stylers: [
+        {
+          visibility: 'off'
+        }
+      ]
+    },
+    {
+      featureType: 'road',
+      elementType: 'labels.icon',
+      stylers: [
+        {
+          visibility: 'off'
+        }
+      ]
+    },
+    {
+      featureType: 'transit',
+      stylers: [
+        {
+          visibility: 'off'
+        }
+      ]
+    }
+  ];
+
   properties: Property[] = new Array<Property>();
   selectedProperty: Property = null;
-  subscription: Subscription;
+  subscriptionProperty: Subscription;
+  subscriptionProperties: Subscription;
 
   constructor(private propertyService: PropertyService) {
-    this.subscription = this.propertyService.getSelected().subscribe(property => {
+    this.subscriptionProperty = this.propertyService.getSelected().subscribe((property: Property) => {
       this.selectedProperty = property;
+      if (this.selectedProperty && this.selectedProperty.position) {
+        this.lat = this.selectedProperty.position[0] - 0.001;
+        this.lng = this.selectedProperty.position[1];
+        this.setPlacesOnMap(
+          this.lat,
+          this.lng
+        );
+      }
+    });
+
+    this.subscriptionProperties = this.propertyService.getAllProperties().subscribe((properties: Property[]) => {
+      this.properties = properties;
     });
   }
 
@@ -28,16 +99,11 @@ export class MapComponent implements OnInit, OnDestroy {
     this.getProperties();
   }
 
-  onMapReady(map) {
-    map.addListener('dragend', () => {
-      const lat = map.center.lat();
-      const lng = map.center.lng();
-      const DISTANCE_FACTOR = 0.05;
+  onCenterChange({lat, lng}) {
 
-      if (Math.abs(lat - this.lat) > DISTANCE_FACTOR || Math.abs(lng - this.lng) > DISTANCE_FACTOR) {
-        this.setPlacesOnMap(lat, lng);
-      }
-    });
+    if (Math.abs(lat - this.lat) > this.distanceFactor || Math.abs(lng - this.lng) > this.distanceFactor) {
+      this.setPlacesOnMap(lat, lng);
+    }
   }
 
   setPlacesOnMap(lat: number, lng: number): void {
@@ -58,11 +124,16 @@ export class MapComponent implements OnInit, OnDestroy {
 
   private getProperties(lat = this.lat, lng = this.lng) {
     this.propertyService.getPropertiesByAt(`${lat},${lng}`, ({results}) => {
-      this.properties = this.properties.concat(results);
+      const tempArray = new Array(
+        ...this.properties,
+        ...results.filter(r => this.properties.findIndex(p => p.id === r.id) === -1)
+      );
+      this.propertyService.setAllProperties(tempArray);
     });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptionProperty.unsubscribe();
+    this.subscriptionProperties.unsubscribe();
   }
 }

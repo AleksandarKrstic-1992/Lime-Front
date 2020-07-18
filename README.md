@@ -17,7 +17,7 @@ For creating dev server, type command `npm run start` and navigate to `http://lo
 
 ### Build
 ---
-For building app, type command `npm build`, or type command `npm build --prod` for production build. Location of builded artifact will be inside `dist` folder
+For building app, type command `npm build`, or type command `npm build:prod` for production build. Location of builded artifact will be inside `dist` folder
 
 ### Features
 ---

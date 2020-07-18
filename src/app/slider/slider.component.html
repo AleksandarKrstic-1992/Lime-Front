@@ -1,0 +1,12 @@
+<swiper 
+  #swiperWrapper
+  [@fadeInOut] 
+  class="slider-content" 
+  *ngIf="selectedProperty"
+  (indexChange)="onIndexChange($event)"
+  [index]="index"
+>
+  <ng-container *ngFor="let property of properties">
+    <app-booking [property]="property"></app-booking>
+  </ng-container>
+</swiper>

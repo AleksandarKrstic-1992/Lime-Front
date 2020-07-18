@@ -1,40 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { BookingService } from '../services/booking.service';
-import {style, state, animate, transition, trigger} from '@angular/animations';
 import { PropertyService } from '../services/property.service';
 import { Property } from '../models/property.model';
-import { Subscription } from 'rxjs';
+
 import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.scss'],
-  animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({opacity : 0}),
-        animate(500, style({opacity : 1}))
-      ]),
-      transition(':leave', [
-        animate(500, style({opacity : 0}))
-      ])
-    ])
-  ]
 })
-export class BookingComponent implements OnInit, OnDestroy {
+export class BookingComponent implements OnInit {
 
-  selectedProperty: Property;
-  propertySubscription: Subscription;
+  @Input() property: Property;
 
   constructor(
     private bookingService: BookingService,
     private propertyService: PropertyService,
     private toastService: ToastService
     ) {
-    this.propertySubscription = this.propertyService.getSelected().subscribe(property => {
-      this.selectedProperty = property;
-    });
    }
 
   ngOnInit() {
@@ -50,9 +34,4 @@ export class BookingComponent implements OnInit, OnDestroy {
       }
     });
   }
-
-  ngOnDestroy() {
-    this.propertySubscription.unsubscribe();
-  }
-
 }

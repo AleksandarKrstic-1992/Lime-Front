@@ -7,11 +7,19 @@ $successBackground: #00c000;
 $successBorder: #007500;
 
 // breakpoint
-$sm: 768px;
+$screen-xs: 320px;
+$screen-xxs: 350px;
+$screen-ss: 376px;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1400px;
 
-@mixin absoluteView($backgroundColor) {
+@mixin absoluteView($backgroundColor: null) {
     position: absolute;
-    background: $backgroundColor;
+    @if variable-exists(some_variable) {
+        background: $backgroundColor;
+    }
     left: 50%;
     transform: translateX(-50%);
     padding: 20px;

@@ -1,18 +1,18 @@
-<div *ngIf="selectedProperty" [@fadeInOut] class="booking-container">
+<div *ngIf="property" class="booking-container">
   <div class="info-container">
     <div class="hotel-image"></div>
     <div class="booking-info">
       <div class="top-info">
-        <p class="title">{{selectedProperty.title}}</p>
-      <p class="vicinity" [innerHTML]='selectedProperty.vicinity'></p>
+        <p class="title">{{property.title}}</p>
+        <p class="vicinity" [innerHTML]='property.vicinity'></p>
       </div>
       <div class="bottom-info">
-        <p class="price">$98</p>
+        <p class="price">£98</p>
         <p class="description">Designs may vary</p>
       </div>
     </div>
   </div>
   <div class="button-container">
-    <button (click)="onBookingClick(selectedProperty.id)">Book</button>
+    <button (click)="onBookingClick(property.id)">Book</button>
   </div>
 </div>

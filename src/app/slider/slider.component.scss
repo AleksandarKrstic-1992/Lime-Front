@@ -1,0 +1,15 @@
+@import '../../styles/var';
+
+.slider-content {
+    @include absoluteView();
+    padding: unset;
+    bottom: 10px;
+    width: 90%;
+    max-width: 750px;
+
+    @media only screen and (max-width: $screen-md - 1) {
+        padding: 0;
+        bottom: 10px;
+        width: 95%;
+    }
+}

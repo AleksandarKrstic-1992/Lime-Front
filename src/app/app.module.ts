@@ -14,6 +14,17 @@ import { Consts } from './utils/consts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastService } from './services/toast.service';
 import { ToastComponent } from './toast/toast.component';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { SliderComponent } from './slider/slider.component';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 1.1,
+  initialSlide: 0,
+  spaceBetween: 10
+};
 
 @NgModule({
   declarations: [
@@ -21,7 +32,8 @@ import { ToastComponent } from './toast/toast.component';
     HeaderComponent,
     BookingComponent,
     MapComponent,
-    ToastComponent
+    ToastComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
@@ -29,11 +41,20 @@ import { ToastComponent } from './toast/toast.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    SwiperModule,
     AgmCoreModule.forRoot({
       apiKey: Consts.googleApiKey
     })
   ],
-  providers: [PropertyService, BookingService, ToastService],
+  providers: [
+    PropertyService,
+    BookingService,
+    ToastService,
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

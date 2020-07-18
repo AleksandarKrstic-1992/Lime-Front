@@ -1,28 +1,26 @@
-<agm-map 
+<agm-map
+  #agmMap
   [latitude]="lat" 
   [longitude]="lng"
   [streetViewControl]="false" 
   [zoomControl]="false" 
-  (mapReady)="onMapReady($event)" 
   [usePanning]='true' 
   [zoom]='15'
+  [styles]="styles"
+  [disableDefaultUI]=false
   (mapClick)="closeBooking()"
+  (centerChange)="onCenterChange($event)"
 >
   <ng-container *ngFor="let property of properties">
     <agm-marker 
       *ngIf="property.position && property.position[0] && property.position[1]"
       (markerClick)="onMarkerClick(property)"
-      [iconUrl]='{
-        scaledSize: {
-          width: 45,
-          height: 45
-        },
-        url: baseIconsPath + (selectedProperty && selectedProperty.id === property.id 
-          ? "selected-marker.png" 
-          : "marker.png")
-      }'
+      [iconUrl]='(selectedProperty && selectedProperty.id === property.id)
+      ?selectedIconUrl
+      :iconUrl'
       [latitude]='property.position[0]'
       [longitude]='property.position[1]'
+      [zIndex]='(selectedProperty && selectedProperty.id === property.id) ? 5 : 1'
     >
     </agm-marker>
   </ng-container>
