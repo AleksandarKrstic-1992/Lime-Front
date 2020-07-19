@@ -1,5 +1,9 @@
 # Limehome front
 
+### Information about backend
+---
+Frontend application works only with [backend](https://github.com/AleksandarKrstic-1992/Limehome-Back).
+
 ### Installation
 ---
 First, we go to the root of the project `/limehome/` and run command:
