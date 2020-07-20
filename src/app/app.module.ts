@@ -18,6 +18,7 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { SliderComponent } from './slider/slider.component';
+import { DatetimeService } from './services/datetime.service';
 
 export const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -61,6 +62,7 @@ export const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     PropertyService,
     BookingService,
     ToastService,
+    DatetimeService,
     {
       provide: SWIPER_CONFIG,
       useValue: DEFAULT_SWIPER_CONFIG

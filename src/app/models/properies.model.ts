@@ -1,5 +1,5 @@
 import { Property } from './property.model';
 
-export class Properties {
-    results: Property[] = [];
+export interface Properties {
+    results: Property[];
 }
