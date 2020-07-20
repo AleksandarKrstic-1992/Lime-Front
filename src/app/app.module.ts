@@ -21,17 +21,17 @@ import { SliderComponent } from './slider/slider.component';
 
 export const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
-  slidesPerView: 3.1,
+  slidesPerView: 3.2,
   initialSlide: 0,
   spaceBetween: 10,
   observer: true,
   breakpoints: {
     576: {
-      slidesPerView: 1.1,
+      slidesPerView: 1.2,
       loop: false,
     },
     1024: {
-      slidesPerView: 2.1,
+      slidesPerView: 2.2,
       loop: false,
     }
   }

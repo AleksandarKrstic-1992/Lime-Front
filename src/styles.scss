@@ -12,8 +12,9 @@ body, p {
             display: none;
         }
     }
+}
 
-    .swiper-wrapper {
-        align-items: flex-end;
-    }
+.slider-content .swiper-wrapper {
+    padding-left: 10px;
+    align-items: flex-end;
 }

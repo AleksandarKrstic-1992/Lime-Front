@@ -36,20 +36,6 @@
                 height: 100px;
                 background-size: auto 120%;
             }
-
-            &.selected {
-                @media screen and (min-width: $screen-sm + 1) {
-                    height: 145px
-                }
-
-                @media screen and (min-width: $screen-md + 1) {
-                    height: 190px;
-                }
-
-                @media only screen and (max-width: $screen-md) and (orientation: landscape) {
-                    height: 110px;
-                }
-            }
         }
 
         .booking-info {
