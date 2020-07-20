@@ -50,10 +50,9 @@
             }
 
             .title {
-                font-weight: bold;
                 font-size: 15px;
                 margin-bottom: 10px;
-                font-family: "OpenSans-SemiBold";
+                font-weight: 600;
 
                 @media only screen and (max-width: $screen-lg) {
                     font-size: 13px;
@@ -67,10 +66,9 @@
 
             .vicinity {
                 font-size: 14px;
-                color: rgb(151, 157, 163);
-                font-family: 'OpenSans-Regular';
+                color: #747d85;
+                font-weight: 600;
                 text-transform: uppercase;
-                font-weight: bold;
                 letter-spacing: 0.6px;
 
                 @media only screen and (max-width: $screen-lg) {
@@ -85,7 +83,7 @@
             .price {
                 font-size: 24px;
                 margin-bottom: 5px;
-                font-family: "OpenSans-SemiBold";
+                font-weight: 600;
 
                 @media only screen and (max-width: $screen-lg) {
                     font-size: 22px;
@@ -100,8 +98,6 @@
             .description {
                 font-size: 13px;
                 color: #a8aeb3;
-                font-family: 'OpenSans-Regular';
-                font-weight: 200;
 
                 @media only screen and (max-width: $screen-lg) {
                     font-size: 11px;
@@ -126,7 +122,7 @@
             padding: 10px 0;
             outline: none;
             cursor: pointer;
-            font-family: 'OpenSans-Regular';
+            font-weight: bold;
 
             @media only screen and (max-width: $screen-md) {
                 padding: 0;
